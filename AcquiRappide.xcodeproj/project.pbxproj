@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262271C617DF3FB8001D7A2E /* PHGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 262271C417DF3CF0001D7A2E /* PHGraph.framework */; };
 		2675D2D817DDF7A600C766CB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2675D2D717DDF7A600C766CB /* Cocoa.framework */; };
 		2675D2E217DDF7A600C766CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2675D2E017DDF7A600C766CB /* InfoPlist.strings */; };
 		2675D2E417DDF7A600C766CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2675D2E317DDF7A600C766CB /* main.m */; };
@@ -14,9 +15,32 @@
 		2675D2EB17DDF7A600C766CB /* RAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2675D2EA17DDF7A600C766CB /* RAAppDelegate.m */; };
 		2675D2EE17DDF7A600C766CB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2675D2EC17DDF7A600C766CB /* MainMenu.xib */; };
 		2675D2F117DDF7A600C766CB /* AcquiRappide.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2675D2EF17DDF7A600C766CB /* AcquiRappide.xcdatamodeld */; };
+		2675D30217DDFBE700C766CB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2675D30117DDFBE700C766CB /* IOKit.framework */; };
+		26B96B8B17DE05020054182F /* libftd2xx.1.2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B96B8A17DE05020054182F /* libftd2xx.1.2.2.dylib */; };
+		26B96B8D17DE09D50054182F /* ftidAcqui.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 26B96B8C17DE09D50054182F /* ftidAcqui.xcodeproj */; };
+		26B96B9117DE0EFC0054182F /* libftidAcqui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B96B9017DE0EFC0054182F /* libftidAcqui.a */; };
+		26B96B9317DE0F270054182F /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B96B9217DE0F270054182F /* Quartz.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		262271C317DF3CF0001D7A2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 262271BF17DF3CEF001D7A2E /* PHGraph.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = PHGraph;
+		};
+		26F7AED817DE1C2D00930A32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26B96B8C17DE09D50054182F /* ftidAcqui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2675D2BD17DDE7C900C766CB;
+			remoteInfo = ftidAcqui;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		262271BF17DF3CEF001D7A2E /* PHGraph.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHGraph.xcodeproj; path = "../../PHGraph-0.2/PHGraph.xcodeproj"; sourceTree = "<group>"; };
 		2675D2D417DDF7A600C766CB /* AcquiRappide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcquiRappide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2675D2D717DDF7A600C766CB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2675D2DA17DDF7A600C766CB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -31,6 +55,11 @@
 		2675D2EA17DDF7A600C766CB /* RAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RAAppDelegate.m; sourceTree = "<group>"; };
 		2675D2ED17DDF7A600C766CB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2675D2F017DDF7A600C766CB /* AcquiRappide.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AcquiRappide.xcdatamodel; sourceTree = "<group>"; };
+		2675D30117DDFBE700C766CB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		26B96B8A17DE05020054182F /* libftd2xx.1.2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd2xx.1.2.2.dylib; path = "../D2XX/bin/10.5-10.7/libftd2xx.1.2.2.dylib"; sourceTree = "<group>"; };
+		26B96B8C17DE09D50054182F /* ftidAcqui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ftidAcqui.xcodeproj; path = ../ftidAcqui/ftidAcqui.xcodeproj; sourceTree = "<group>"; };
+		26B96B9017DE0EFC0054182F /* libftidAcqui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libftidAcqui.a; path = "../../../../../Library/Developer/Xcode/DerivedData/AcquiRappide-gnpkdzapkybygmciszizgnbinbew/Build/Products/Debug/libftidAcqui.a"; sourceTree = "<group>"; };
+		26B96B9217DE0F270054182F /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +67,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				262271C617DF3FB8001D7A2E /* PHGraph.framework in Frameworks */,
+				26B96B9317DE0F270054182F /* Quartz.framework in Frameworks */,
+				26B96B9117DE0EFC0054182F /* libftidAcqui.a in Frameworks */,
+				26B96B8B17DE05020054182F /* libftd2xx.1.2.2.dylib in Frameworks */,
+				2675D30217DDFBE700C766CB /* IOKit.framework in Frameworks */,
 				2675D2D817DDF7A600C766CB /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,9 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		262271C017DF3CEF001D7A2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				262271C417DF3CF0001D7A2E /* PHGraph.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2675D2CB17DDF7A600C766CB = {
 			isa = PBXGroup;
 			children = (
+				262271BF17DF3CEF001D7A2E /* PHGraph.xcodeproj */,
+				26B96B9217DE0F270054182F /* Quartz.framework */,
+				26B96B9017DE0EFC0054182F /* libftidAcqui.a */,
+				26B96B8C17DE09D50054182F /* ftidAcqui.xcodeproj */,
+				26B96B8A17DE05020054182F /* libftd2xx.1.2.2.dylib */,
+				2675D30117DDFBE700C766CB /* IOKit.framework */,
 				2675D2DD17DDF7A600C766CB /* AcquiRappide */,
 				2675D2D617DDF7A600C766CB /* Frameworks */,
 				2675D2D517DDF7A600C766CB /* Products */,
@@ -105,6 +153,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		26F7AED517DE1C2D00930A32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26F7AED917DE1C2D00930A32 /* libftidAcqui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,12 +201,39 @@
 			mainGroup = 2675D2CB17DDF7A600C766CB;
 			productRefGroup = 2675D2D517DDF7A600C766CB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 26F7AED517DE1C2D00930A32 /* Products */;
+					ProjectRef = 26B96B8C17DE09D50054182F /* ftidAcqui.xcodeproj */;
+				},
+				{
+					ProductGroup = 262271C017DF3CEF001D7A2E /* Products */;
+					ProjectRef = 262271BF17DF3CEF001D7A2E /* PHGraph.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2675D2D317DDF7A600C766CB /* AcquiRappide */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		262271C417DF3CF0001D7A2E /* PHGraph.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PHGraph.framework;
+			remoteRef = 262271C317DF3CF0001D7A2E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		26F7AED917DE1C2D00930A32 /* libftidAcqui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libftidAcqui.a;
+			remoteRef = 26F7AED817DE1C2D00930A32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2675D2D217DDF7A600C766CB /* Resources */ = {
@@ -160,6 +243,7 @@
 				2675D2E217DDF7A600C766CB /* InfoPlist.strings in Resources */,
 				2675D2E817DDF7A600C766CB /* Credits.rtf in Resources */,
 				2675D2EE17DDF7A600C766CB /* MainMenu.xib in Resources */,
+				26B96B8D17DE09D50054182F /* ftidAcqui.xcodeproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,9 +353,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../CorePlot_1.3/Binaries/MacOS\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcquiRappide/AcquiRappide-Prefix.pch";
 				INFOPLIST_FILE = "AcquiRappide/AcquiRappide-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/AcquiRappide-gnpkdzapkybygmciszizgnbinbew/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../D2XX/bin/static64\"",
+					"\"$(SRCROOT)/../D2XX/Object/10.5-10.7/x86_64\"",
+					"\"$(SRCROOT)/../D2XX/bin/10.5-10.7\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -281,9 +376,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../CorePlot_1.3/Binaries/MacOS\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcquiRappide/AcquiRappide-Prefix.pch";
 				INFOPLIST_FILE = "AcquiRappide/AcquiRappide-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/AcquiRappide-gnpkdzapkybygmciszizgnbinbew/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../D2XX/bin/static64\"",
+					"\"$(SRCROOT)/../D2XX/Object/10.5-10.7/x86_64\"",
+					"\"$(SRCROOT)/../D2XX/bin/10.5-10.7\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -308,6 +414,7 @@
 				2675D2F617DDF7A600C766CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

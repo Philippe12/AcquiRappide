@@ -7,6 +7,7 @@
 //
 
 #import "RAAppDelegate.h"
+#include "../../ftidAcqui/ftdiAcqui.h"
 
 @implementation RAAppDelegate
 
@@ -17,6 +18,52 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    // If you make sure your dates are calculated at noon, you shouldn't have to
+    // worry about daylight savings. If you use midnight, you will have to adjust
+    // for daylight savings time.
+    
+    xaxis=[[PHxAxis alloc] initWithStyle:PHShowGrid | PHShowGraduationAtBottom | PHShowGraduationAtTop];
+    [xaxis setMinimum:0 maximum:20000];
+    [xaxis setFormat:@"%lg"];
+    yaxis=[[PHyAxis alloc] initWithStyle:PHShowGrid | PHShowGraduationAtLeft | PHShowGraduationAtRight | PHBig];
+    [yaxis setMinimum:0 maximum:4095];
+    [yaxis setFormat:@"%1.7lg"];
+    [_graphView addPHxAxis:xaxis];
+    [_graphView addPHyAxis:yaxis];
+    [_graphView setMouseEventsMode:PHZoomOnSelection];
+    int i;
+    for (i=0;i<20000;i++)
+    {
+        xData[i] = 0;
+        yData10[i] = 0;
+        yData60[i] = 0;
+        yData110[i] = 0;
+        yData160[i] = 0;
+    }
+
+    plotting10 = [[PHCurve alloc]initWithXData:xData yData:yData10 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
+    [plotting10 setColor:[NSColor redColor]];
+    [plotting10 setWidth:0.5];
+    [_graphView addPHGraphObject:plotting10];
+
+    plotting60 = [[PHCurve alloc]initWithXData:xData yData:yData60 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
+    [plotting60 setColor:[NSColor greenColor]];
+    [plotting60 setWidth:0.5];
+    [_graphView addPHGraphObject:plotting60];
+
+    plotting110 = [[PHCurve alloc]initWithXData:xData yData:yData110 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
+    [plotting110 setColor:[NSColor blueColor]];
+    [plotting110 setWidth:0.5];
+    [_graphView addPHGraphObject:plotting110];
+
+    plotting160 = [[PHCurve alloc]initWithXData:xData yData:yData160 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
+    [plotting160 setColor:[NSColor blackColor]];
+    [plotting160 setWidth:0.5];
+    [_graphView addPHGraphObject:plotting160];
+
+    [_graphView setHasBorder:YES];
+    [_graphView setLeftBorder:65 rightBorder:65 bottomBorder:20 topBorder:20];
+    [_graphView setDelegate:self];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "ph.fouquet.AcquiRappide" in the user's Application Support directory.
@@ -134,6 +181,39 @@
     }
 }
 
+- (IBAction)Acqui:(id)sender {
+    if( ftdiConnect() == 1 ) {
+        [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob) toTarget:self withObject:nil];
+    }
+}
+
+- (void)startTheBackgroundJob {
+    while (1)
+    {
+        ftdiAcqui();
+        [self performSelectorOnMainThread:@selector(makeMyGraphMoving) withObject:nil waitUntilDone:NO];
+    }
+}
+
+- (void)makeMyGraphMoving {
+    // Add some data
+    int i;
+    for (i=0;i<20000;i++)
+    {
+        xData[i] = i;
+        yData10[i] = ftdiGetValue((int)i, 0);
+        yData60[i] = ftdiGetValue((int)i, 1);
+        yData110[i] = ftdiGetValue((int)i, 2);
+        yData160[i] = ftdiGetValue((int)i, 3);
+    }
+    
+    [plotting10 setShouldDraw:YES ];
+    [plotting60 setShouldDraw:YES ];
+    [plotting110 setShouldDraw:YES ];
+    [plotting160 setShouldDraw:YES ];
+    [_graphView setNeedsDisplay:YES];
+}
+
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
     // Save changes in the application's managed object context before the application terminates.
@@ -180,4 +260,9 @@
     return NSTerminateNow;
 }
 
+- (IBAction)resetZoom:(id)sender {
+    [xaxis setMinimum:0 maximum:20000];
+    [yaxis setMinimum:0 maximum:4095];
+    [_graphView setNeedsDisplay:YES];
+}
 @end
