@@ -10,5 +10,6 @@
 
 int main(int argc, char *argv[])
 {
+    system("sudo kextunload /System/Library/Extensions/FTDIUSBSerialDriver.kext");
     return NSApplicationMain(argc, (const char **)argv);
 }
