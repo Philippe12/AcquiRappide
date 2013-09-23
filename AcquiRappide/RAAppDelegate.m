@@ -44,21 +44,25 @@
     plotting10 = [[PHCurve alloc]initWithXData:xData yData:yData10 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
     [plotting10 setColor:[NSColor redColor]];
     [plotting10 setWidth:0.5];
+    [plotting10 setTitle:@"Voie 10°"];
     [_graphView addPHGraphObject:plotting10];
 
     plotting60 = [[PHCurve alloc]initWithXData:xData yData:yData60 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
     [plotting60 setColor:[NSColor greenColor]];
     [plotting60 setWidth:0.5];
+    [plotting60 setTitle:@"Voie 60°"];
     [_graphView addPHGraphObject:plotting60];
 
     plotting110 = [[PHCurve alloc]initWithXData:xData yData:yData110 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
     [plotting110 setColor:[NSColor blueColor]];
     [plotting110 setWidth:0.5];
+    [plotting110 setTitle:@"Voie 110°"];
     [_graphView addPHGraphObject:plotting110];
 
     plotting160 = [[PHCurve alloc]initWithXData:xData yData:yData160 numberOfPoints:20000 xAxis:xaxis yAxis:yaxis ];
     [plotting160 setColor:[NSColor blackColor]];
     [plotting160 setWidth:0.5];
+    [plotting160 setTitle:@"Voie 160°"];
     [_graphView addPHGraphObject:plotting160];
 
     [_graphView setHasBorder:YES];
