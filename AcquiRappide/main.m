@@ -10,6 +10,9 @@
 
 int main(int argc, char *argv[])
 {
-    system("sudo kextunload /System/Library/Extensions/FTDIUSBSerialDriver.kext");
+    //old osx
+    //system("sudo kextunload /System/Library/Extensions/FTDIUSBSerialDriver.kext");
+    //10.10
+    //system("sudo kextunload /System/Library/Extensions/AppleUSBFTDI.kext");
     return NSApplicationMain(argc, (const char **)argv);
 }

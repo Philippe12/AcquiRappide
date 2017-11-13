@@ -14,6 +14,7 @@
 @interface RAAppDelegate : NSObject <NSApplicationDelegate/*, CPTPlotDataSource*/> {
     CPTXYGraph *graph;
     NSArray *plotData;
+    bool pThread;
 	PHxAxis* xaxis;
 	PHyAxis* yaxis;
 	PHCurve* plotting10;
@@ -25,6 +26,7 @@
 	double yData60[20000];
 	double yData110[20000];
 	double yData160[20000];
+    NSString* fileName;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -35,8 +37,11 @@
 
 - (IBAction)saveAction:(id)sender;
 - (IBAction)Acqui:(id)sender;
+- (IBAction)Stop:(id)sender;
+- (IBAction)OpenSavingFile:(id)sender;
 
 - (IBAction)resetZoom:(id)sender;
 @property (weak) IBOutlet PHGraphView *graphView;
+@property (weak) IBOutlet NSTextField *Sampling;
 
 @end

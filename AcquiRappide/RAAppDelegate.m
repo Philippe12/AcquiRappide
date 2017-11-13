@@ -21,9 +21,10 @@
     // If you make sure your dates are calculated at noon, you shouldn't have to
     // worry about daylight savings. If you use midnight, you will have to adjust
     // for daylight savings time.
+    NSString* fileName = nil;
     
     xaxis=[[PHxAxis alloc] initWithStyle:PHShowGrid | PHShowGraduationAtBottom | PHShowGraduationAtTop];
-    [xaxis setMinimum:0 maximum:20000];
+    [xaxis setMinimum:0 maximum:1];
     [xaxis setFormat:@"%lg"];
     yaxis=[[PHyAxis alloc] initWithStyle:PHShowGrid | PHShowGraduationAtLeft | PHShowGraduationAtRight | PHBig];
     [yaxis setMinimum:0 maximum:4095];
@@ -187,16 +188,43 @@
 
 - (IBAction)Acqui:(id)sender {
     if( ftdiConnect() == 1 ) {
+        pThread = true;
         [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob) toTarget:self withObject:nil];
     }
 }
 
-- (void)startTheBackgroundJob {
-    while (1)
+- (IBAction)Stop:(id)sender {
+    pThread = false;
+}
+
+- (IBAction)OpenSavingFile:(id)sender {
+    NSSavePanel* saveDlg = [NSSavePanel savePanel];
+    
+    // Display the dialog.  If the OK button was pressed,
+    // process the files.
+    if( [saveDlg runModal] == NSFileHandlingPanelOKButton )
     {
-        ftdiAcqui();
+        // Get an array containing the full filenames of all
+        // files and directories selected.
+        fileName = [[saveDlg URL] path];
+    }
+}
+
+- (void)startTheBackgroundJob {
+    while (pThread)
+    {
+        NSDate *date = [NSDate date];
+        if( fileName == nil)
+            ftdiAcqui(NULL);
+        else
+            ftdiAcqui([fileName fileSystemRepresentation]);
+        double timePassed_s = [date timeIntervalSinceNow] * -1;
+        double speed = 20000.0 / timePassed_s;
+        NSString *txt = [NSString stringWithFormat:@"f acqui = %f p/s", speed];
+        [_Sampling setStringValue:txt];
         [self performSelectorOnMainThread:@selector(makeMyGraphMoving) withObject:nil waitUntilDone:NO];
     }
+    ftdiClose();
 }
 
 - (void)makeMyGraphMoving {
@@ -204,7 +232,7 @@
     int i;
     for (i=0;i<20000;i++)
     {
-        xData[i] = i;
+        xData[i] = i/20000.0;
         yData10[i] = ftdiGetValue((int)i, 0);
         yData60[i] = ftdiGetValue((int)i, 1);
         yData110[i] = ftdiGetValue((int)i, 2);
@@ -265,7 +293,7 @@
 }
 
 - (IBAction)resetZoom:(id)sender {
-    [xaxis setMinimum:0 maximum:20000];
+    [xaxis setMinimum:0 maximum:1];
     [yaxis setMinimum:0 maximum:4095];
     [_graphView setNeedsDisplay:YES];
 }
